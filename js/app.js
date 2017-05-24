@@ -4,9 +4,10 @@ let crudApp = angular.module("crudApp", []);
 
 crudApp.controller("studentsController", function studentsController(){
 
-  this.newStudent = {};
+  this.clickedStudent = {};
+
   this.saveStudent = function(){
-    studentsList.push(newStudent);
+    this.studentsList.push(this.newStudent);
     this.newStudent = {};
   };
 
