@@ -16,6 +16,10 @@
         <button type="button" class="btn btn-success pull-right" data-toggle="modal" href="#my-modal-create">Add students</button>
         <h1>Students List</h1>
       </div>
+      <div class="alert alert-info" ng-if="students.message">
+        <a href="#" class="close" data-dismiss="alert" ng-click="clearMessage()" aria-label="close">&times;</a>
+        {{students.message}}
+      </div>
       <div>
           <table class="table table-striped">
             <thead>
@@ -34,8 +38,8 @@
                 <td>{{student.firstname}}</td>
                 <td>{{student.lastname}}</td>
                 <td>{{student.email}}</td>
-                <td><button type="button" class="btn btn-info" data-toggle="modal" href="#my-modal-create"><span class="glyphicon glyphicon glyphicon-pencil"></span></button></td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" href="#my-modal-delete"><span class="glyphicon  glyphicon glyphicon-trash"></span></button></td>
+                <td><button type="button" class="btn btn-info" data-toggle="modal" href="#my-modal-edit" ng-click="students.selectStudent(student)"><span class="glyphicon glyphicon glyphicon-pencil"></span></button></td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" href="#my-modal-delete" ng-click="students.selectStudent(student)"><span class="glyphicon  glyphicon glyphicon-trash"></span></button></td>
               </tr>
             </tbody>
           </table>
@@ -54,16 +58,16 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="email">First name:</label>
-              <input type="text" class="form-control" id="email" ng-model="students.newStudent.firstname">
+              <label for="firstname">First name:</label>
+              <input type="text" class="form-control" id="firstname" ng-model="students.newStudent.firstname">
             </div>
             <div class="form-group">
-              <label for="pwd">Last name:</label>
-              <input type="text" class="form-control" id="pwd" ng-model="students.newStudent.lastname">
+              <label for="lastname">Last name:</label>
+              <input type="text" class="form-control" id="lastname" ng-model="students.newStudent.lastname">
             </div>
             <div class="form-group">
-              <label for="pwd">Email:</label>
-              <input type="email" class="form-control" id="pwd" ng-model="students.newStudent.email">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" ng-model="students.newStudent.email">
             </div>
           </form>
         </div>
@@ -81,27 +85,27 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Edit student info</h4>
+            <h4 class="modal-title">Edit {{students.clickedStudent.firstname + " " + students.clickedStudent.lastname}} info</h4>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="email">First name:</label>
-                <input type="text" class="form-control" id="email">
+                <label for="firstname">First name:</label>
+                <input type="text" class="form-control" id="firstname" ng-model="students.clickedStudent.firstname">
               </div>
               <div class="form-group">
-                <label for="pwd">Last name:</label>
-                <input type="text" class="form-control" id="pwd">
+                <label for="lastname">Last name:</label>
+                <input type="text" class="form-control" id="lastname" ng-model="students.clickedStudent.lastname">
               </div>
               <div class="form-group">
-                <label for="pwd">Email:</label>
-                <input type="email" class="form-control" id="pwd">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" ng-model="students.clickedStudent.email">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Edit student</button>
+            <button type="button" class="btn btn-primary" ng-click="student.updateStudent()" data-dismiss="modal">Edit student</button>
           </div>
         </div>
       </div>
@@ -113,11 +117,11 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Are you sure you want to delete this student?</h4>
+              <h4 class="modal-title">Are you sure you want to delete {{students.clickedStudent.firstname + " " + students.clickedStudent.lastname}} ?</h4>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-primary">Yes</button>
+              <button type="button" class="btn btn-primary" ng-click="students.deleteStudent()" data-dismiss="modal">Yes</button>
             </div>
           </div>
         </div>
