@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Students list</title>
+        <title>Students CRUD</title>
         <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -11,6 +11,27 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body ng-controller="studentsController as students">
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">Students-CRUD</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/">Students list</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
     <div class="container">
       <div class="page-header">
         <button type="button" class="btn btn-success pull-right" data-toggle="modal" href="#my-modal-create">Add students</button>
@@ -73,7 +94,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" ng-click="students.saveStudent()"  data-dismiss="modal">Create student</button>
+          <button type="button" class="btn btn-primary" ng-click="students.saveStudent(student.newStudent)"  data-dismiss="modal">Create student</button>
         </div>
       </div>
     </div>
@@ -132,8 +153,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD42nq5lLz4HPaOii1g5lc0qTX79Y4CooU",
+            authDomain: "students-crud.firebaseapp.com",
+            databaseURL: "https://students-crud.firebaseio.com",
+            projectId: "students-crud",
+            storageBucket: "students-crud.appspot.com",
+            messagingSenderId: "244088294230"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="js/app.js"></script>
+
   </body>
 </html>
