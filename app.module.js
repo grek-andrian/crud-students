@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('crudApp', [
-    'ngRoute',
+var crudApp = angular.module('crudApp', [
+    'ui.router',
     'studentsList',
     'firebase'
 ]);

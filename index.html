@@ -33,7 +33,7 @@
       </div>
     </nav>
 
-    <div ng-view></div>
+    <ui-view></ui-view>
 
     <!-- Footer -->
     <footer class="navbar navbar-inverse navbar-fixed-bottom">
@@ -61,10 +61,11 @@
         firebase.initializeApp(config);
     </script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
     <script src="students-list/students-list.module.js"></script>
     <script src="students-list/students-list.component.js"></script>
+    <script src="students-list/students-list.controller.js"></script>
   </body>
 </html>
