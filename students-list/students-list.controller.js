@@ -2,6 +2,8 @@ angular.module('studentsList').controller('studentsController', function student
     var ref = firebase.database().ref().child("students");
     this.studentsList = $firebaseArray(ref);
 
+    this.groupsList = $firebaseArray(firebase.database().ref().child("groups"));
+
     this.clickedStudent = {};
 
     this.message = "";
@@ -16,10 +18,6 @@ angular.module('studentsList').controller('studentsController', function student
 
     this.updateStudent = function() {
         var record = this.studentsList.$getRecord(this.clickedStudent.$id);
-        record.firstname = this.clickedStudent.firstname;
-        record.lastname = this.clickedStudent.lastname;
-        record.email = this.clickedStudent.email;
-
         this.studentsList.$save(record).then(function (ref) {
             console.log("edited record with id " + ref.key);
         });
@@ -35,7 +33,8 @@ angular.module('studentsList').controller('studentsController', function student
         this.studentsList.$add({
             firstname: this.newStudent.firstname,
             lastname: this.newStudent.lastname,
-            email: this.newStudent.email
+            email: this.newStudent.email,
+            group: this.newStudent.group
         }).then(function (ref) {
             console.log("added record with id " + ref.key);
         });

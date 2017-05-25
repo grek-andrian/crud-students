@@ -16,8 +16,6 @@ angular.module('groupsList').controller('groupsController', function groupsContr
 
     this.updateGroup = function() {
         var record = this.groupsList.$getRecord(this.clickedGroup.$id);
-        record.name = this.clickedGroup.name;
-
         this.groupsList.$save(record).then(function (ref) {
             console.log("edited record with id " + ref.key);
         });

@@ -5,17 +5,19 @@ angular.module('crudApp').
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'students-list/students-list.template.html',
-            controller: 'studentsController',
-            controllerAs: 'students'
+            templateUrl: 'home.template.html'
+        })
+        .state('students', {
+            url: '/students',
+            template: '<students-list/>'
         })
         .state('groups', {
-            url: '/group',
+            url: '/groups',
             templateUrl: 'groups-list/groups-list.template.html',
             controller: 'groupsController',
             controllerAs: 'groups'
         });
 
     $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix('');
 }]);
