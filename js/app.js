@@ -3,7 +3,7 @@
 let crudApp = angular.module("crudApp", ["firebase"]);
 
 crudApp.controller("studentsController", function studentsController($firebaseArray){
-  var ref = firebase.database().ref();
+  var ref = firebase.database().ref().child("students");
   this.studentsList = $firebaseArray(ref);
 
   this.clickedStudent = {};
@@ -19,16 +19,14 @@ crudApp.controller("studentsController", function studentsController($firebaseAr
   };
 
   this.updateStudent = function(){
-    //var id = this.id;
-    //var record = this.studentsList.$getRecord(id);
-      this.studentsList.$save({
-          firstname: this.clickedStudent.firstname,
-          lastname: this.clickedStudent.lastname,
-          email: this.clickedStudent.email
-      }).then(function(ref){
-          console.log(ref.key)
-      });
-    this.studentsList.push(this.clickedStudent);
+    var record = this.studentsList.$getRecord(this.clickedStudent.$id);
+    record.firstname = this.clickedStudent.firstname;
+    record.lastname = this.clickedStudent.lastname;
+    record.email = this.clickedStudent.email;
+
+    this.studentsList.$save(record).then(function(ref){
+        console.log("edited record with id " + ref.key);
+    });
     this.message = "The student successfully updated";
   };
 
@@ -43,15 +41,10 @@ crudApp.controller("studentsController", function studentsController($firebaseAr
           lastname: this.newStudent.lastname,
           email: this.newStudent.email
       }).then(function(ref){
-        var id = ref.key;
+        console.log("added record with id " + ref.key);
     });
     this.newStudent = {};
     this.message = "The new student successfully added";
     };
-    //this.studentsList = [
-    //    {firstname: "Ivan" , lastname: "Franko", email: "i.franko@ukr.net"},
-    //    {firstname: "Taras" , lastname: "Shevchenko", email: "t.shevchenko@ukr.net"},
-    //    {firstname: "Lesya" , lastname: "Ukrainka", email: "l.ukrainka@ukr.net"}
-    //];
 
 });
