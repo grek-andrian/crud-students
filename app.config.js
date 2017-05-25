@@ -8,6 +8,12 @@ angular.module('crudApp').
             templateUrl: 'students-list/students-list.template.html',
             controller: 'studentsController',
             controllerAs: 'students'
+        })
+        .state('groups', {
+            url: '/group',
+            templateUrl: 'groups-list/groups-list.template.html',
+            controller: 'groupsController',
+            controllerAs: 'groups'
         });
 
     $locationProvider.html5Mode(true);
