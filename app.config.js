@@ -13,9 +13,7 @@ angular.module('crudApp').
         })
         .state('groups', {
             url: '/groups',
-            templateUrl: 'groups-list/groups-list.template.html',
-            controller: 'groupsController',
-            controllerAs: 'groups'
+            template: '<groups-list/>'
         });
 
     $locationProvider.html5Mode(true);
