@@ -1,0 +1,33 @@
+{
+  "name": "crud-students",
+  "version": "1.0.0",
+  "description": "npm for students-crud",
+  "main": "app.config.js",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "karma": "^1.7.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^3.4.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grek-andrian/crud-students.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grek-andrian/crud-students/issues"
+  },
+  "homepage": "https://github.com/grek-andrian/crud-students#readme"
+}
