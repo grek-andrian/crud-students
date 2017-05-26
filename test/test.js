@@ -1,13 +1,8 @@
-let chai = require('chai');
-let server = require('../server');
-
-describe('Data', function() {
-  it('should list ALL students on /studentss GET', function(done) {
-    chai.request(server)
-        .get('/students')
-         .end(function(err, res){
-            res.should.have.status(200);
-            done();
+var assert = require('assert');
+describe('Array', function() {
+    describe('#indexOf()', function() {
+        it('should return -1 when the value is not present', function() {
+            assert.equal(-1, [1,2,3].indexOf(4));
         });
-});
+    });
 });

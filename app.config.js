@@ -1,7 +1,8 @@
-'use strict';
+angular
+    .module('crudApp')
+    .config(config);
 
-angular.module('crudApp').
-    config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+function config($stateProvider, $locationProvider) {
     $stateProvider
         .state('home', {
             url: '/',
@@ -18,4 +19,4 @@ angular.module('crudApp').
 
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');
-}]);
+}
